@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('faq-manager::layouts.backend')
 
 @section('content')
     <div class="col-md-12">
