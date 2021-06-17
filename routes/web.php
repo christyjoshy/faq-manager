@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::macro('category',function(string $prefix){
     Route::prefix($prefix)->group(function(){
-        Route::get('/',[CategoryManagementController::class,'index']);
+        Route::resource('/', CategoryManagementController::class);
     });
 });
 Route::macro('queries',function(string $prefix){
