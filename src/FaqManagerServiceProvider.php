@@ -2,9 +2,9 @@
 
 namespace Christyjoshy\FaqManager;
 
+use Christyjoshy\FaqManager\Commands\FaqManagerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Christyjoshy\FaqManager\Commands\FaqManagerCommand;
 
 class FaqManagerServiceProvider extends PackageServiceProvider
 {

@@ -2,10 +2,9 @@
 
 namespace Christyjoshy\FaqManager\Tests;
 
+use Christyjoshy\FaqManager\FaqManagerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Christyjoshy\FaqManager\FaqManagerServiceProvider;
-use Illuminate\Support\Facades\Route;
 
 class TestCase extends Orchestra
 {
@@ -33,6 +32,5 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/create_faq_entries_table.php.stub';
         (new \CreateCategoryTable())->up();
         (new \CreateFaqEntriesTable())->up();
-        
     }
 }

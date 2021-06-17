@@ -6,12 +6,15 @@ use Illuminate\Routing\Controller;
 
 class CategoryManagementController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $categories = Category::all();
-        return view('faq-manager::category.index',compact('categories'));
+
+        return view('faq-manager::category.index', compact('categories'));
     }
-    public function store(){
+
+    public function store()
+    {
         // TODO store new category
     }
 }
-?>
