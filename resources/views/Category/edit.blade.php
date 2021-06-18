@@ -5,8 +5,9 @@
         <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
             <h2>Edit FAQ Category</h2>
         </div>
-        <form action="#" method="POST">
+        <form action="{{ route('category.update',$category->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-xs-12 col-sm-12 cl-md-12">
                     <div class="form-group">

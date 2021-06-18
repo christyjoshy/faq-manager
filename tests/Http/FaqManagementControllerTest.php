@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 class FaqManagementControllerTest extends TestCase
 {
-    /** @test */
     public function it_can_display_list_of_faq()
     {
         Route::queries('test');

@@ -6,14 +6,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::macro('category',function(string $prefix){
     Route::prefix($prefix)->group(function(){
-        Route::get('/', [CategoryManagementController::class,'index']);
+        Route::get('/', [CategoryManagementController::class,'index'])->name('category.index');
         Route::get('/create', [CategoryManagementController::class,'create'])->name('category.create');
         Route::post('/store', [CategoryManagementController::class,'store'])->name('category.store');
+        Route::get('/edit/{category}', [CategoryManagementController::class,'edit'])->name('category.edit');
+        Route::put('/update/{category}', [CategoryManagementController::class,'update'])->name('category.update');
     });
 });
 Route::macro('queries',function(string $prefix){
     Route::prefix($prefix)->group(function(){
-        Route::get('/',[FaqManagementController::class,'index']);        
+        Route::get('/', [FaqManagementController::class,'index'])->name('faq.index');
+        Route::get('/create', [FaqManagementController::class,'create'])->name('faq.create');
+        Route::post('/store', [FaqManagementController::class,'store'])->name('faq.store');
+        Route::get('/edit/{faq}', [FaqManagementController::class,'edit'])->name('faq.edit');
+        Route::put('/update/{faq}', [FaqManagementController::class,'update'])->name('faq.update');     
     });
 });
 

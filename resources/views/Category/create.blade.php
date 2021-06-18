@@ -6,10 +6,8 @@
             <h2>Add new FAQ Category</h2>
         </div>
         @if(count($errors) > 0)
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>

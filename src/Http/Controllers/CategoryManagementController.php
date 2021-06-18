@@ -1,9 +1,9 @@
 <?php
 namespace Christyjoshy\FaqManager\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Christyjoshy\FaqManager\Models\Category;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class CategoryManagementController extends Controller
 {
@@ -16,7 +16,6 @@ class CategoryManagementController extends Controller
 
     public function create()
     {
-        //return "ok";
         return view('faq-manager::category.create');
     }
 
@@ -38,10 +37,10 @@ class CategoryManagementController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $category = $this->validate($request, [
+        $data = $this->validate($request, [
             'name' => 'required',
         ]);
-        $category->update($category);
+        $category->update($data);
 
         return redirect()->route('category.index')
                          ->with('success', 'Category updated successfully');

@@ -5,12 +5,18 @@
         <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
             <h2>List all FAQ Categories</h2>
         </div>
+        @if($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <p>{{ $message }}</p>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="float-right mb-4">
-                            <button class="btn btn-sm btn-primary pull-right">Add Category</button>
+                            <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary pull-right"> Add Category</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +37,7 @@
                         <td width = "50%">{{ $category->name }}</td>
                         <td>{{ $category->updated_at }}</td>
                         <td width = "20%">
-                            <a class="btn btn-outline btn-warning" href="" rel="nofollow">Edit</a>
+                            <a class="btn btn-outline btn-warning" href="{{ route('category.edit',$category->id) }}" rel="nofollow">Edit</a>
                             <a class="btn btn-outline btn-danger" href="" rel="nofollow">Delete</a>
                         </td>
                         </tr>
