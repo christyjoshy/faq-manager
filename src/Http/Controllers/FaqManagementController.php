@@ -1,9 +1,9 @@
 <?php
 namespace Christyjoshy\FaqManager\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Christyjoshy\FaqManager\Models\Category;
 use Christyjoshy\FaqManager\Models\FaqEntry;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class FaqManagementController extends Controller
@@ -18,7 +18,8 @@ class FaqManagementController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('faq-manager::faq.create',compact('categories'));
+
+        return view('faq-manager::faq.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -26,17 +27,19 @@ class FaqManagementController extends Controller
         $faq = $this->validate($request, [
             'question' => 'required',
             'answer' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ]);
         FaqEntry::create($faq);
 
         return redirect()->route('faq.index')
                          ->with('success', 'FAQ added successfully');
     }
+
     public function edit(FaqEntry $faq)
     {
         $categories = Category::all();
-        return view('faq-manager::faq.edit', compact('faq','categories'));
+
+        return view('faq-manager::faq.edit', compact('faq', 'categories'));
     }
 
     public function update(Request $request, FaqEntry $faq)
@@ -44,7 +47,7 @@ class FaqManagementController extends Controller
         $faqData = $this->validate($request, [
             'question' => 'required',
             'answer' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
         ]);
         $faq->update($faqData);
 
