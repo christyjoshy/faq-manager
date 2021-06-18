@@ -18,7 +18,7 @@
         <form action="{{ route('category.store') }}" method="POST">
             @csrf
             <div class="row">
-                <div class="col-xs-12 col-sm-12 cl-md-12">
+                <div class="col-xs-12 col-sm-12 cl-md-12 mb-2 p-2">
                     <div class="form-group">
                         <strong>Category Name<span class="text-danger">*</span>:</strong>
                         <input type="text" name="name" id="name" placeholder="Name" class="form-control" value="{{ old('name') }}">
