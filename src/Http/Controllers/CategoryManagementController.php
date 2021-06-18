@@ -16,6 +16,7 @@ class CategoryManagementController extends Controller
 
     public function create()
     {
+        //return "ok";
         return view('faq-manager::category.create');
     }
 

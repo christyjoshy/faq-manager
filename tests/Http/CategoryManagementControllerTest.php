@@ -14,6 +14,6 @@ class CategoryManagementControllerTest extends TestCase
         $this->assertDatabaseCount('categories', 1);
 
         Route::category('test');
-        $this->get('/test/store')->assertOk();
+        $this->get('/test/create')->assertOk();
     }
 }

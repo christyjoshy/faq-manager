@@ -16,8 +16,8 @@
                 @endforeach
             </ul>
         </div>
-    @endif
-        <form action="#" method="POST">
+        @endif
+        <form action="{{ route('category.store') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-xs-12 col-sm-12 cl-md-12">
