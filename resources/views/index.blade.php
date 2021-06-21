@@ -21,7 +21,7 @@
                         <ul id="list">
                         @foreach($categories as $faq)
                         @if($faq->faq->count() > 0)
-                            @if(config('faq-manager.category_title_show') == 1)
+                            @if(config('faq-manager.category_title_show') == true)
                                 <li class="category"><strong>{{ strToUpper($faq->name) }}</strong></li>
                             @endif
                         @foreach($faq->faq as $qn)

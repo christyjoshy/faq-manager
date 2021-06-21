@@ -33,22 +33,32 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                @foreach($queries as $query)
-                  <tr>
+                @forelse($queries as $query)
+                  <tr id="query_{{ $query->id }}">
                     <th scope="row">{{ $i++ }}</th>
                     <td width="50%">{{ $query->question }}</td>
                     <td>{{ $query->category->name }}</td>
                     <td>{{ $query->updated_at }}</td>
                     <td width = "20%">
                         <a class="btn btn-outline btn-warning" href="{{ route('faq.edit',$query->id) }}" rel="nofollow">Edit</a>
-                        <a class="btn btn-outline btn-danger" href="" rel="nofollow">Delete</a>
+                          @csrf
+                            @method('DELETE')
+                        <a class="btn btn-outline btn-danger action-delete" data-id="{{ $query->id }}">Delete</a>
                     </td>
                   </tr>
-                @endforeach
+                  @empty
+                  <tr>
+                      <td class="text-center" colspan="5">No data found</td>
+                  </tr>
+                @endforelse
                 </tbody>
               </table>
             
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="{{ asset('vendor/faq-manager/js/faq.js') }}"></script>
 @endsection

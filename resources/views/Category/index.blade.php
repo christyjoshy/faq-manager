@@ -33,7 +33,7 @@
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                    @foreach($categories as $category)
+                    @forelse($categories as $category)
                         <tr id="category_{{ $category->id }}">
                         <th scope="row">{{ $i++ }}</th>
                         <td width = "50%">{{ $category->name }}</td>
@@ -45,7 +45,11 @@
                             <a class="btn btn-outline btn-danger action-delete" data-id="{{ $category->id }}" rel="nofollow">Delete</a>
                         </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="text-center" colspan="4">No data found</td>
+                        </tr>
+                    @endforelse
                     </tbody>
                     </table>
                 
@@ -55,5 +59,5 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="{{ assets('category.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/faq-manager/js/category.js') }}"></script>
 @endsection

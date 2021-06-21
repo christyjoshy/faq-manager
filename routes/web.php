@@ -21,7 +21,8 @@ Route::macro('queries',function(string $prefix){
         Route::get('/create', [FaqManagementController::class,'create'])->name('faq.create');
         Route::post('/store', [FaqManagementController::class,'store'])->name('faq.store');
         Route::get('/edit/{faq}', [FaqManagementController::class,'edit'])->name('faq.edit');
-        Route::put('/update/{faq}', [FaqManagementController::class,'update'])->name('faq.update');     
+        Route::put('/update/{faq}', [FaqManagementController::class,'update'])->name('faq.update');    
+        Route::delete('/destroy/{faq}', [FaqManagementController::class,'destroy'])->name('category.destroy'); 
     });
 });
 Route::macro('faq',function(string $prefix){
