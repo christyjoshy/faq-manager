@@ -28,12 +28,12 @@ return [
     
     /*
     |--------------------------------------------------------------------------
-    | Category Title Display Controlls
+    | Category Name Display Setting
     |--------------------------------------------------------------------------
     |
-    | This option controls the settings for display category title in frontend faq page. Default set to 1 for displaying. 
-    | You may change these default to 0 for hiding as per your needs.
+    | This option controls the settings for display category title in frontend faq page. Default set to true for displaying. 
+    | You can change these default to false for hiding as per your needs.
     |
     */
-    'category_title_show' => 0
+    'category_title_show' => true
 ];
