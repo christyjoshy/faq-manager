@@ -16,9 +16,11 @@ class CategoryManagementControllerTest extends TestCase
         // Route::category('test');
         // $this->get('/test/create')->assertOk();
     }
+
     /** @test */
-    public function get_config(){
+    public function get_config()
+    {
         $question = config('faq-manager.question_prefix');
-        $this->assertSame($question,'Q');
+        $this->assertSame($question, 'Q');
     }
 }
