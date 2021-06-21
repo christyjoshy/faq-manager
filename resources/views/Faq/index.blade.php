@@ -1,10 +1,11 @@
+<?php $title = "List of all Frequently Asked Questions";?>
 @extends('faq-manager::layouts.backend')
 
 @section('content')
-<div class="col-md-12">
-    <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
-        <h2>List of all Frequently Asked Questions</h2>
-    </div>
+<div class="col-md-2">
+  @include('faq-manager::layouts.partial.sidebar')
+</div>
+<div class="col-md-8">
     @if($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

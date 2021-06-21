@@ -1,10 +1,8 @@
+<?php $title = "Add new FAQ Category";?>
 @extends('faq-manager::layouts.backend')
 
 @section('content')
-    <div class="col-md-12">
-        <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
-            <h2>Add new FAQ Category</h2>
-        </div>
+    <div class="offset-md-4 col-md-4">
         @if(count($errors) > 0)
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -25,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 cl-md-12">
-                    <button type="submit" class="btn btn-outline btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary w-25">Save</button>
                 </div>
             </div>
         </form>

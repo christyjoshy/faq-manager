@@ -1,10 +1,8 @@
+<?php $title = "Add new FAQ";?>
 @extends('faq-manager::layouts.backend')
 
 @section('content')
-    <div class="col-md-12">
-        <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
-            <h2>Add new FAQ</h2>
-        </div>
+    <div class="offset-md-3 col-md-6">
         @if(count($errors) > 0)
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -33,7 +31,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 mb-2 p-2">
                     <div class="form-group">
                         <strong>Category :</strong>
-                        <select class="form-control" name="category_id">
+                        <select class="form-select form-control" name="category_id">
                             <option value="">Select Category</option>
                             @foreach($categories as $category)
                                 <option @if(old('category_id') == $category->id ) selected @endif value="{{$category->id}}">{{$category->name}}</option>
@@ -42,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 cl-md-12 p-2">
-                    <button type="submit" class="btn btn-outline btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary w-25">Save</button>
                 </div>
             </div>
         </form>

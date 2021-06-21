@@ -19,6 +19,7 @@ class FaqManagerServiceProvider extends PackageServiceProvider
             ->name('faq-manager')
             ->hasConfigFile()
             ->hasViews()
+            ->hasAssets()
             ->hasRoute('web')
             ->hasMigration('create_category_table')
             ->hasMigration('create_faq_entries_table')

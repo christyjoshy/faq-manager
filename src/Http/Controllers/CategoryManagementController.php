@@ -45,4 +45,29 @@ class CategoryManagementController extends Controller
         return redirect()->route('category.index')
                          ->with('success', 'Category updated successfully');
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $category = Category::find($id);
+        if ($request->ajax()) {
+            if ($category->faq->count() > 0) {
+                $status = [
+                    'status' => 'notok',
+                    'message' => 'error',
+                    'data' => "Category is related to one or more queries",
+                ];
+
+                return response()->json($status);
+            } else {
+                $category->delete();
+                $status = [
+                    'status' => 'ok',
+                    'message' => 'success',
+                    'data' => "Category deleted successfully ",
+                ];
+
+                return response()->json($status);
+            }
+        }
+    }
 }

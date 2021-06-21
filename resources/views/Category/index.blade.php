@@ -1,16 +1,18 @@
+<?php $title = "List all FAQ Categories";?>
 @extends('faq-manager::layouts.backend')
 
 @section('content')
-    <div class="col-md-12">
-        <div class="box-header rounded bg-light text-dark p-4 p-md-5 mb-4 mt-4 d-flex justify-content-center">
-            <h2>List all FAQ Categories</h2>
-        </div>
+    <div class="col-md-2">
+        @include('faq-manager::layouts.partial.sidebar')
+    </div>
+    <div class="col-md-8">
         @if($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 <p>{{ $message }}</p>
             </div>
         @endif
+        <div id="response-message" class="d-none"></div>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
@@ -32,13 +34,15 @@
                     <tbody>
                         <?php $i = 1; ?>
                     @foreach($categories as $category)
-                        <tr>
+                        <tr id="category_{{ $category->id }}">
                         <th scope="row">{{ $i++ }}</th>
                         <td width = "50%">{{ $category->name }}</td>
                         <td>{{ $category->updated_at }}</td>
                         <td width = "20%">
                             <a class="btn btn-outline btn-warning" href="{{ route('category.edit',$category->id) }}" rel="nofollow">Edit</a>
-                            <a class="btn btn-outline btn-danger" href="" rel="nofollow">Delete</a>
+                            @csrf
+                            @method('DELETE')
+                            <a class="btn btn-outline btn-danger action-delete" data-id="{{ $category->id }}" rel="nofollow">Delete</a>
                         </td>
                         </tr>
                     @endforeach
@@ -48,4 +52,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="{{ assets('category.js') }}"></script>
 @endsection
