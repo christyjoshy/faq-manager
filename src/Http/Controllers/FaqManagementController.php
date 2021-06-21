@@ -54,18 +54,19 @@ class FaqManagementController extends Controller
         return redirect()->route('faq.index')
                          ->with('success', 'FAQ updated successfully');
     }
+
     public function destroy(Request $request, $id)
     {
         $faq = FaqEntry::find($id);
         if ($request->ajax()) {
-                $faq->delete();
-                $status = [
+            $faq->delete();
+            $status = [
                     'status' => 'ok',
                     'message' => 'success',
                     'data' => "FAQ deleted successfully ",
                 ];
 
-                return response()->json($status);
+            return response()->json($status);
         }
     }
 }
