@@ -22,12 +22,12 @@ Route::macro('queries',function(string $prefix){
         Route::post('/store', [FaqManagementController::class,'store'])->name('faq.store');
         Route::get('/edit/{faq}', [FaqManagementController::class,'edit'])->name('faq.edit');
         Route::put('/update/{faq}', [FaqManagementController::class,'update'])->name('faq.update');    
-        Route::delete('/destroy/{faq}', [FaqManagementController::class,'destroy'])->name('category.destroy'); 
+        Route::delete('/destroy/{faq}', [FaqManagementController::class,'destroy'])->name('faq.destroy'); 
     });
 });
 Route::macro('faq',function(string $prefix){
     Route::prefix($prefix)->group(function(){
-        Route::get('/frontend', [FrontendController::class,'index'])->name('frontend.index');   
+        Route::get('/faq', [FrontendController::class,'index'])->name('frontend.index');   
     });
 });
 

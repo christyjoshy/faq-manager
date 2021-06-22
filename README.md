@@ -5,26 +5,6 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/christyjoshy/faq-manager/Check%20&%20fix%20styling?label=code%20style)](https://github.com/christyjoshy/faq-manager/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/christyjoshy/faq-manager.svg?style=flat-square)](https://packagist.org/packages/christyjoshy/faq-manager)
 
----
-This repo can be used as to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this faq-manager
-2. Run "./configure-faq-manager.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/faq-manager.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/faq-manager)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
 ## Installation
 
 You can install the package via composer:
@@ -45,18 +25,34 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-config"
 ```
 
+You can publish the view file with:
+```bash
+php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-views"
+```
+
+You can publish the asset file with:
+```bash
+php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-assets"
+```
+
+Frontend Routing :
+```bash
+Route::faq('your-url');
+```
+Backend Routing :
+```bash
+Route::category('your-url');
+Route::queries('your-url');
+```
+
 This is the contents of the published config file:
 
 ```php
 return [
+    'question_prefix' => 'Q',
+    'answer_prefix' => 'A',
+    'category_title_show' => true
 ];
-```
-
-## Usage
-
-```php
-$faq-manager = new Christyjoshy\FaqManager();
-echo $faq-manager->echoPhrase('Hello, Spatie!');
 ```
 
 ## Testing

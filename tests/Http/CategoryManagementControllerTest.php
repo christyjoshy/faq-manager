@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Route;
 class CategoryManagementControllerTest extends TestCase
 {
     /** @test */
-    public function it_can_display_list_of_categories()
+    public function it_can_create_and_list_categories()
     {
         Category::create(['name' => 'General']);
         $this->assertDatabaseCount('categories', 1);
 
         // Route::category('test');
-        // $this->get('/test/create')->assertOk();
+        // $this->get('/test')->assertOk();
     }
 
     /** @test */
@@ -22,5 +22,9 @@ class CategoryManagementControllerTest extends TestCase
     {
         $question = config('faq-manager.question_prefix');
         $this->assertSame($question, 'Q');
+        $question = config('faq-manager.answer_prefix');
+        $this->assertSame($question, 'A');
+        $question = config('faq-manager.category_title_show');
+        $this->assertSame($question, true);
     }
 }

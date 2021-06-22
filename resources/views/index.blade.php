@@ -19,20 +19,24 @@
                <div class="container bg-light">
                     <div class="p-4 m-4">
                         <ul id="list">
-                        @foreach($categories as $faq)
-                        @if($faq->faq->count() > 0)
-                            @if(config('faq-manager.category_title_show') == true)
-                                <li class="category"><strong>{{ strToUpper($faq->name) }}</strong></li>
-                            @endif
-                        @foreach($faq->faq as $qn)
-                                <div class="m-2 p-2"><strong>{{ config('faq-manager.question_prefix') }}</strong>.&nbsp;{{ $qn->question }}</div>
-                                <div class="m-2 p-2"><strong>{{ config('faq-manager.answer_prefix') }}</strong>.&nbsp;{!! $qn->answer !!}</div>
-                                @if(config('faq-manager.category_title_show') == 1)
-                                    <hr>
+                            @forelse($categories as $faq)
+                                @if($faq->faq->count() > 0)
+                                    @if(config('faq-manager.category_title_show') == true)
+                                        <li class="category"><strong>{{ strToUpper($faq->name) }}</strong></li>
+                                    @endif
+                                    @forelse($faq->faq as $qn)
+                                            <div class="m-2 p-2"><strong>{{ config('faq-manager.question_prefix') }}</strong>.&nbsp;{{ $qn->question }}</div>
+                                            <div class="m-2 p-2"><strong>{{ config('faq-manager.answer_prefix') }}</strong>.&nbsp;{!! $qn->answer !!}</div>
+                                            @if(config('faq-manager.category_title_show') == true)
+                                                <hr>
+                                            @endif
+                                    @empty
+                                        <div class="text-muted">No records found.</div>
+                                    @endforelse
                                 @endif
-                        @endforeach
-                        @endif
-                        @endforeach
+                            @empty
+                                <div class="text-muted">No records found.</div>
+                            @endforelse
                         </ul>
                     </div>
                </div>

@@ -3,6 +3,7 @@ $(document).ready(function(){
     $(document).on("click",'.action-delete', function(e){
         e.stopPropagation();
         var faq_id= $(this).data('id');
+        var url = $(this).data('url');
         swal({
             title: "Do you want to delete?",
             type: "error",
@@ -12,7 +13,7 @@ $(document).ready(function(){
         },
         function() {
             $.ajax({
-            url: 'query/destroy/'+faq_id,
+            url: url,
             type: "DELETE",
             data: {faq_id:faq_id, _token:_token},
             success: function(dataResult){
