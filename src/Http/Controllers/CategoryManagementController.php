@@ -4,8 +4,9 @@ namespace Christyjoshy\FaqManager\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Christyjoshy\FaqManager\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as RoutingController;
 
-class CategoryManagementController extends Controller
+class CategoryManagementController extends RoutingController
 {
     public function index()
     {
@@ -54,7 +55,7 @@ class CategoryManagementController extends Controller
                 $status = [
                     'status' => 'notok',
                     'message' => 'error',
-                    'data' => "Category is related to one or more queries",
+                    'data' => "<strong>Error!</strong>, Category is related to one or more FAQs"
                 ];
 
                 return response()->json($status);

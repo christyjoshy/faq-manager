@@ -42,7 +42,7 @@
                             <a class="btn btn-outline btn-warning" href="{{ route('category.edit',$category->id) }}" rel="nofollow">Edit</a>
                             @csrf
                             @method('DELETE')
-                            <a class="btn btn-outline btn-danger action-delete" data-id="{{ $category->id }}" rel="nofollow">Delete</a>
+                            <a class="btn btn-outline btn-danger action-delete" data-url="{{ route('category.destroy',$category->id) }}" data-id="{{ $category->id }}" rel="nofollow">Delete</a>
                         </td>
                         </tr>
                     @empty

@@ -2,13 +2,20 @@
 
 namespace Christyjoshy\FaqManager\Tests;
 
+use Christyjoshy\FaqManager\Models\FaqEntry;
 use Illuminate\Support\Facades\Route;
 
 class FaqManagementControllerTest extends TestCase
 {
-    // public function it_can_display_list_of_faq()
-    // {
-    //     Route::queries('test');
-    //     $this->get('/test')->assertOk();
-    // }
+    /** @test */
+    public function it_can_create_faq()
+    {
+        FaqEntry::create([
+            'question' => 'sample query?',
+            'answer' => 'nothing just do it',
+            'category_id' => 1,
+        ]);
+
+        $this->assertDatabaseCount('faq_entries', 1);
+    }
 }

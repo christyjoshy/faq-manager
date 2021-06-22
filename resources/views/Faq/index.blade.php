@@ -42,8 +42,8 @@
                     <td width = "20%">
                         <a class="btn btn-outline btn-warning" href="{{ route('faq.edit',$query->id) }}" rel="nofollow">Edit</a>
                           @csrf
-                            @method('DELETE')
-                        <a class="btn btn-outline btn-danger action-delete" data-id="{{ $query->id }}">Delete</a>
+                          @method('DELETE')
+                        <a class="btn btn-outline btn-danger action-delete" data-url="{{ route('faq.destroy',$query->id) }}" data-id="{{ $query->id }}">Delete</a>
                     </td>
                   </tr>
                   @empty
