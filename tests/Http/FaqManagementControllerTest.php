@@ -3,7 +3,6 @@
 namespace Christyjoshy\FaqManager\Tests;
 
 use Christyjoshy\FaqManager\Models\FaqEntry;
-use Illuminate\Support\Facades\Route;
 
 class FaqManagementControllerTest extends TestCase
 {
