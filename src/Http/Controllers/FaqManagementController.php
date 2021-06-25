@@ -1,7 +1,6 @@
 <?php
 namespace Christyjoshy\FaqManager\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Christyjoshy\FaqManager\Models\Category;
 use Christyjoshy\FaqManager\Models\FaqEntry;
 use Illuminate\Http\Request;

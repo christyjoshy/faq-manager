@@ -1,12 +1,11 @@
 <?php
 namespace Christyjoshy\FaqManager\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+
 use Christyjoshy\FaqManager\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as RoutingController;
 
-class CategoryManagementController extends RoutingController
+class CategoryManagementController extends Controller
 {
     public function index()
     {
