@@ -1,7 +1,6 @@
 <?php
 namespace Christyjoshy\FaqManager\Http\Controllers;
 
-
 use Christyjoshy\FaqManager\Models\Category;
 use Illuminate\Http\Request;
 
@@ -54,7 +53,7 @@ class CategoryManagementController extends Controller
                 $status = [
                     'status' => 'notok',
                     'message' => 'error',
-                    'data' => "<strong>Error!</strong>, Category is related to one or more FAQs"
+                    'data' => "<strong>Error!</strong>, Category is related to one or more FAQs",
                 ];
 
                 return response()->json($status);
