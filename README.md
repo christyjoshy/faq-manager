@@ -13,44 +13,59 @@ You can install the package via composer:
 composer require christyjoshy/faq-manager
 ```
 
-You can publish and run the migrations with:
+publish the essential files
 
 ```bash
-php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-config"
-```
-
-You can publish the view file with:
-```bash
-php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-views"
-```
-
-You can publish the asset file with:
-```bash
-php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider" --tag="faq-manager-assets"
+php artisan vendor:publish --provider="Christyjoshy\FaqManager\FaqManagerServiceProvider"
 ```
 
 Frontend Routing :
 ```bash
-Route::faq('your-url');
+Route::faq('faq');
 ```
 Backend Routing :
 ```bash
-Route::category('your-url');
-Route::queries('your-url');
+Route::category('category');
+Route::queries('query');
 ```
 
 This is the contents of the published config file:
 
 ```php
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Question Perfix Defaults
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default prefix string for question in frontend faq page. You may change these defaults
+    | as required
+    |
+    */
+
     'question_prefix' => 'Q',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Answer Perfix Defaults
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the default prefix string for answer in frontend faq page. You may change these defaults
+    | as required
+    |
+    */
+
     'answer_prefix' => 'A',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category Name Display Setting
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the settings for display category title in frontend faq page. Default set to true for displaying.
+    | You can change these default to false for hiding as per your needs.
+    |
+    */
     'category_title_show' => true
 ];
 ```

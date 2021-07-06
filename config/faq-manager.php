@@ -1,7 +1,6 @@
 <?php
-// config for Christyjoshy/ClassName
 return [
-    
+
     /*
     |--------------------------------------------------------------------------
     | Question Perfix Defaults
@@ -25,13 +24,13 @@ return [
     */
 
     'answer_prefix' => 'A',
-    
+
     /*
     |--------------------------------------------------------------------------
     | Category Name Display Setting
     |--------------------------------------------------------------------------
     |
-    | This option controls the settings for display category title in frontend faq page. Default set to true for displaying. 
+    | This option controls the settings for display category title in frontend faq page. Default set to true for displaying.
     | You can change these default to false for hiding as per your needs.
     |
     */
