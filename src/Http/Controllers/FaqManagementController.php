@@ -7,18 +7,40 @@ use Illuminate\Http\Request;
 
 class FaqManagementController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $queries = FaqEntry::all();
+        if($request->expectsJson()){
 
-        return view('faq-manager::faq.index', compact('queries'));
+            $response = [
+                'success' => true,
+                'data'    => $queries,
+                'message' => "Data successfuly fetched",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
+            return view('faq-manager::faq.index', compact('queries'));
+        }
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $categories = Category::all();
 
-        return view('faq-manager::faq.create', compact('categories'));
+        if($request->expectsJson()){
+
+            $response = [
+                'success' => true,
+                'data'    => $categories,
+                'message' => "Data successfuly fetched",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
+
+            return view('faq-manager::faq.create', compact('categories'));
+        }
     }
 
     public function store(Request $request)
@@ -29,16 +51,38 @@ class FaqManagementController extends Controller
             'category_id' => 'required',
         ]);
         FaqEntry::create($faq);
+        if($request->expectsJson()){
+
+            $response = [
+                'success' => true,
+                'data'    => '',
+                'message' => "Query successfuly Added",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
 
         return redirect()->route('faq.index')
                          ->with('success', 'FAQ added successfully');
+        }
     }
 
-    public function edit(FaqEntry $faq)
+    public function edit(FaqEntry $faq, Request $request)
     {
         $categories = Category::all();
+        if($request->expectsJson()){
+
+            $response = [
+                'success' => true,
+                'data'    => $categories,
+                'message' => "Data successfuly fetched",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
 
         return view('faq-manager::faq.edit', compact('faq', 'categories'));
+        }
     }
 
     public function update(Request $request, FaqEntry $faq)
@@ -49,23 +93,44 @@ class FaqManagementController extends Controller
             'category_id' => 'required',
         ]);
         $faq->update($faqData);
+        if($request->expectsJson()){
 
-        return redirect()->route('faq.index')
+            $response = [
+                'success' => true,
+                'data'    => '',
+                'message' => "Data successfuly updated",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
+
+            return redirect()->route('faq.index')
                          ->with('success', 'FAQ updated successfully');
+        }
     }
 
     public function destroy(Request $request, $id)
     {
         $faq = FaqEntry::find($id);
-        if ($request->ajax()) {
-            $faq->delete();
-            $status = [
-                    'status' => 'ok',
-                    'message' => 'success',
-                    'data' => "FAQ deleted successfully ",
-                ];
+        if($request->expectsJson()){
 
-            return response()->json($status);
+            $response = [
+                'success' => true,
+                'message' => "Data successfuly deleted",
+            ];
+            return response()->json($response, 200);
+        }
+        else{
+            if ($request->ajax()) {
+                $faq->delete();
+                $status = [
+                        'status' => 'ok',
+                        'message' => 'success',
+                        'data' => "FAQ deleted successfully ",
+                    ];
+
+                return response()->json($status);
+            }
         }
     }
 }
