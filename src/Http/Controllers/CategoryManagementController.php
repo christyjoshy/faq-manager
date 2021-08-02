@@ -10,16 +10,15 @@ class CategoryManagementController extends Controller
     {
         $categories = Category::all();
 
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $categories,
+                'data' => $categories,
                 'message' => "Categories successfuly fetched",
             ];
+
             return response()->json($response, 200);
-        }
-        else{
+        } else {
             return view('faq-manager::category.index', compact('categories'));
         }
     }
@@ -35,17 +34,15 @@ class CategoryManagementController extends Controller
             'name' => 'required',
         ]);
         Category::create($category);
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => '',
+                'data' => '',
                 'message' => "Category successfuly Added",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
+            return response()->json($response, 200);
+        } else {
             return redirect()->route('category.index')
                          ->with('success', 'Category added successfully');
         }
@@ -53,16 +50,15 @@ class CategoryManagementController extends Controller
 
     public function edit(Category $category, Request $request)
     {
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $category,
+                'data' => $category,
                 'message' => "Category details successfuly fetched",
             ];
+
             return response()->json($response, 200);
-        }
-        else{
+        } else {
             return view('faq-manager::category.edit', compact('category'));
         }
     }
@@ -73,17 +69,15 @@ class CategoryManagementController extends Controller
             'name' => 'required',
         ]);
         $category->update($data);
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => '',
+                'data' => '',
                 'message' => "Category successfuly updated",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
+            return response()->json($response, 200);
+        } else {
             return redirect()->route('category.index')
                          ->with('success', 'Category updated successfully');
         }

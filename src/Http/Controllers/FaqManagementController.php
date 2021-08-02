@@ -10,16 +10,15 @@ class FaqManagementController extends Controller
     public function index(Request $request)
     {
         $queries = FaqEntry::all();
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $queries,
+                'data' => $queries,
                 'message' => "Data successfuly fetched",
             ];
+
             return response()->json($response, 200);
-        }
-        else{
+        } else {
             return view('faq-manager::faq.index', compact('queries'));
         }
     }
@@ -28,17 +27,15 @@ class FaqManagementController extends Controller
     {
         $categories = Category::all();
 
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $categories,
+                'data' => $categories,
                 'message' => "Data successfuly fetched",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
+            return response()->json($response, 200);
+        } else {
             return view('faq-manager::faq.create', compact('categories'));
         }
     }
@@ -51,18 +48,16 @@ class FaqManagementController extends Controller
             'category_id' => 'required',
         ]);
         FaqEntry::create($faq);
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => '',
+                'data' => '',
                 'message' => "Query successfuly Added",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
-        return redirect()->route('faq.index')
+            return response()->json($response, 200);
+        } else {
+            return redirect()->route('faq.index')
                          ->with('success', 'FAQ added successfully');
         }
     }
@@ -70,18 +65,16 @@ class FaqManagementController extends Controller
     public function edit(FaqEntry $faq, Request $request)
     {
         $categories = Category::all();
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $categories,
+                'data' => $categories,
                 'message' => "Data successfuly fetched",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
-        return view('faq-manager::faq.edit', compact('faq', 'categories'));
+            return response()->json($response, 200);
+        } else {
+            return view('faq-manager::faq.edit', compact('faq', 'categories'));
         }
     }
 
@@ -93,17 +86,15 @@ class FaqManagementController extends Controller
             'category_id' => 'required',
         ]);
         $faq->update($faqData);
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => '',
+                'data' => '',
                 'message' => "Data successfuly updated",
             ];
-            return response()->json($response, 200);
-        }
-        else{
 
+            return response()->json($response, 200);
+        } else {
             return redirect()->route('faq.index')
                          ->with('success', 'FAQ updated successfully');
         }
@@ -112,15 +103,14 @@ class FaqManagementController extends Controller
     public function destroy(Request $request, $id)
     {
         $faq = FaqEntry::find($id);
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
                 'message' => "Data successfuly deleted",
             ];
+
             return response()->json($response, 200);
-        }
-        else{
+        } else {
             if ($request->ajax()) {
                 $faq->delete();
                 $status = [

@@ -10,16 +10,15 @@ class FrontendController extends Controller
     {
         $categories = Category::latest()->get();
 
-        if($request->expectsJson()){
-
+        if ($request->expectsJson()) {
             $response = [
                 'success' => true,
-                'data'    => $categories,
+                'data' => $categories,
                 'message' => "Data successfuly fetched",
             ];
+
             return response()->json($response, 200);
-        }
-        else{
+        } else {
             return view('faq-manager::index', compact('categories'));
         }
     }

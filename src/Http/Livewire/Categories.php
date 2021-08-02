@@ -3,7 +3,6 @@
 namespace Christyjoshy\FaqManager\Http\Livewire;
 
 use Christyjoshy\FaqManager\Models\Category;
-use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,38 +11,45 @@ class Categories extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
-    public $name,$categoryId;
+    public $name;
+    public $categoryId;
 
-    public function create(){
+    public function create()
+    {
         $this->name = '';
         $this->categoryId = 0;
     }
-    public function store(){
+
+    public function store()
+    {
         $this->validate([
             'name' => 'required',
         ]);
-        Category::updateOrCreate(['id' => $this->categoryId],[
+        Category::updateOrCreate(['id' => $this->categoryId], [
             'name' => $this->name,
         ]);
-        session()->flash('message','Category successfully added');
+        session()->flash('message', 'Category successfully added');
         $this->emit('categorySaved');
         $this->name = '';
-
     }
-    public function edit($id){
+
+    public function edit($id)
+    {
         $category = Category::find($id);
         $this->name = $category->name;
         $this->categoryId = $category->id;
     }
-    public function destroy($id){
+
+    public function destroy($id)
+    {
         Category::find($id)->delete();
-        session()->flash('message','Category Successfuly Deleted');
-   }
+        session()->flash('message', 'Category Successfuly Deleted');
+    }
 
     public function render()
     {
         $categories = Category::latest()->paginate(5);
-        return view('faq-manager::livewire.Category.categories',compact('categories'))->layout('faq-manager::layouts.livewire.app')->slot('table');
+
+        return view('faq-manager::livewire.Category.categories', compact('categories'))->layout('faq-manager::layouts.livewire.app')->slot('table');
     }
 }
-?>
