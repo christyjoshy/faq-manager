@@ -37,7 +37,6 @@ Route::macro('faq',function(string $prefix){
 
 //livewire routes
 
-
 Route::macro('faqlivewire',function(string $prefix){
     Route::prefix($prefix)->group(function(){
         Route::get('/categories', Categories::class)->name('backend.category.livewire');
