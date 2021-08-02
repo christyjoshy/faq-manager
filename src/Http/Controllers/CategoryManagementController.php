@@ -6,11 +6,21 @@ use Illuminate\Http\Request;
 
 class CategoryManagementController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
 
-        return view('faq-manager::category.index', compact('categories'));
+        if ($request->expectsJson()) {
+            $response = [
+                'success' => true,
+                'data' => $categories,
+                'message' => "Categories successfuly fetched",
+            ];
+
+            return response()->json($response, 200);
+        } else {
+            return view('faq-manager::category.index', compact('categories'));
+        }
     }
 
     public function create()
@@ -24,14 +34,33 @@ class CategoryManagementController extends Controller
             'name' => 'required',
         ]);
         Category::create($category);
+        if ($request->expectsJson()) {
+            $response = [
+                'success' => true,
+                'data' => '',
+                'message' => "Category successfuly Added",
+            ];
 
-        return redirect()->route('category.index')
+            return response()->json($response, 200);
+        } else {
+            return redirect()->route('category.index')
                          ->with('success', 'Category added successfully');
+        }
     }
 
-    public function edit(Category $category)
+    public function edit(Category $category, Request $request)
     {
-        return view('faq-manager::category.edit', compact('category'));
+        if ($request->expectsJson()) {
+            $response = [
+                'success' => true,
+                'data' => $category,
+                'message' => "Category details successfuly fetched",
+            ];
+
+            return response()->json($response, 200);
+        } else {
+            return view('faq-manager::category.edit', compact('category'));
+        }
     }
 
     public function update(Request $request, Category $category)
@@ -40,9 +69,18 @@ class CategoryManagementController extends Controller
             'name' => 'required',
         ]);
         $category->update($data);
+        if ($request->expectsJson()) {
+            $response = [
+                'success' => true,
+                'data' => '',
+                'message' => "Category successfuly updated",
+            ];
 
-        return redirect()->route('category.index')
+            return response()->json($response, 200);
+        } else {
+            return redirect()->route('category.index')
                          ->with('success', 'Category updated successfully');
+        }
     }
 
     public function destroy(Request $request, $id)

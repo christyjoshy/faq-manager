@@ -52,7 +52,8 @@
                     @endforelse
                     </tbody>
                     </table>
-                
+                    <livewire:counter/>
+
             </div>
         </div>
     </div>
