@@ -13,6 +13,12 @@ You can install the package via composer:
 composer require christyjoshy/faq-manager
 ```
 
+publish the essential files of livewire version
+
+```bash
+php artisan vendor:publish --provider="Christyjoshy\FaqManager\LivewireFaqManagerServiceProvider"
+```
+
 publish the essential files
 
 ```bash
@@ -28,6 +34,24 @@ Backend Routing :
 Route::category('category');
 Route::queries('query');
 ```
+Api Routes
+
+Frontend Routing :
+```bash
+Route::faqApi('faq');
+```
+Backend Routing :
+```bash
+Route::categoryApi('category');
+Route::queriesApi('query');
+```
+Livewire Routes
+
+```bash
+Route::faqlivewire('livewire');
+```
+
+
 
 This is the contents of the published config file:
 

@@ -49,7 +49,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Christyjoshy\\FaqManager\\FaqManagerServiceProvider"
+                "Christyjoshy\\FaqManager\\FaqManagerServiceProvider",
+                "Christyjoshy\\FaqManager\\LivewireFaqManagerServiceProvider"
             ],
             "aliases": {
                 "FaqManager": "Christyjoshy\\FaqManager\\FaqManagerFacade",

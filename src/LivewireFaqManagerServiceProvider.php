@@ -3,10 +3,15 @@
 namespace Christyjoshy\FaqManager;
 
 use Christyjoshy\FaqManager\Commands\FaqManagerCommand;
+use Christyjoshy\FaqManager\Http\Livewire\Categories;
+use Christyjoshy\FaqManager\Http\Livewire\Counter;
+use Christyjoshy\FaqManager\Http\Livewire\Faq;
+use Christyjoshy\FaqManager\Http\Livewire\FrontendFaq;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FaqManagerServiceProvider extends PackageServiceProvider
+class LivewireFaqManagerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -25,5 +30,10 @@ class FaqManagerServiceProvider extends PackageServiceProvider
             ->hasMigration('create_faq_entries_table')
             ->hasCommand(FaqManagerCommand::class);
     }
-
+    public function bootingPackage(){
+        Livewire::component('counter', Counter::class);
+        Livewire::component('categories', Categories::class);
+        Livewire::component('faq', Faq::class);
+        Livewire::component('frontendfaq', FrontendFaq::class);
+    }
 }
