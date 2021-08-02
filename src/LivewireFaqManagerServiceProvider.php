@@ -30,7 +30,9 @@ class LivewireFaqManagerServiceProvider extends PackageServiceProvider
             ->hasMigration('create_faq_entries_table')
             ->hasCommand(FaqManagerCommand::class);
     }
-    public function bootingPackage(){
+
+    public function bootingPackage()
+    {
         Livewire::component('counter', Counter::class);
         Livewire::component('categories', Categories::class);
         Livewire::component('faq', Faq::class);
