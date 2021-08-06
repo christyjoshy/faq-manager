@@ -3,10 +3,6 @@
 namespace Christyjoshy\FaqManager;
 
 use Christyjoshy\FaqManager\Commands\FaqManagerCommand;
-use Christyjoshy\FaqManager\Http\Livewire\Categories;
-use Christyjoshy\FaqManager\Http\Livewire\Faq;
-use Christyjoshy\FaqManager\Http\Livewire\FrontendFaq;
-use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
