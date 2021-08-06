@@ -4,10 +4,6 @@ use Christyjoshy\FaqManager\Http\Controllers\CategoryManagementController;
 use Christyjoshy\FaqManager\Http\Controllers\FaqManagementController;
 use Christyjoshy\FaqManager\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
-use Christyjoshy\FaqManager\Http\Livewire\Categories;
-use Christyjoshy\FaqManager\Http\Livewire\Counter;
-use Christyjoshy\FaqManager\Http\Livewire\Faq;
-use Christyjoshy\FaqManager\Http\Livewire\FrontendFaq;
 
 Route::macro('categoryApi',function(string $prefix){
     Route::prefix($prefix)->group(function(){
