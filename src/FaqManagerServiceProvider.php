@@ -25,5 +25,4 @@ class FaqManagerServiceProvider extends PackageServiceProvider
             ->hasMigration('create_faq_entries_table')
             ->hasCommand(FaqManagerCommand::class);
     }
-
 }
