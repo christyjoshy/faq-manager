@@ -50,6 +50,7 @@
         "laravel": {
             "providers": [
                 "Christyjoshy\\FaqManager\\FaqManagerServiceProvider",
+                "Christyjoshy\\FaqManager\\ApiFaqManagerServiceProvider",
                 "Christyjoshy\\FaqManager\\LivewireFaqManagerServiceProvider"
             ],
             "aliases": {

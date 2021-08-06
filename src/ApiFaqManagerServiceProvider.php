@@ -3,10 +3,14 @@
 namespace Christyjoshy\FaqManager;
 
 use Christyjoshy\FaqManager\Commands\FaqManagerCommand;
+use Christyjoshy\FaqManager\Http\Livewire\Categories;
+use Christyjoshy\FaqManager\Http\Livewire\Faq;
+use Christyjoshy\FaqManager\Http\Livewire\FrontendFaq;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FaqManagerServiceProvider extends PackageServiceProvider
+class ApiFaqManagerServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -18,12 +22,11 @@ class FaqManagerServiceProvider extends PackageServiceProvider
         $package
             ->name('faq-manager')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasAssets()
-            ->hasRoute('web')
+            // ->hasViews()
+            // ->hasAssets()
+            ->hasRoute('api')
             ->hasMigration('create_category_table')
             ->hasMigration('create_faq_entries_table')
             ->hasCommand(FaqManagerCommand::class);
     }
-
 }

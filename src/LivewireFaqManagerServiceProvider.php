@@ -25,7 +25,7 @@ class LivewireFaqManagerServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasAssets()
-            ->hasRoutes(['web','api'])
+            ->hasRoute('livewire-routes')
             ->hasMigration('create_category_table')
             ->hasMigration('create_faq_entries_table')
             ->hasCommand(FaqManagerCommand::class);
@@ -33,7 +33,6 @@ class LivewireFaqManagerServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
-        Livewire::component('counter', Counter::class);
         Livewire::component('categories', Categories::class);
         Livewire::component('faq', Faq::class);
         Livewire::component('frontendfaq', FrontendFaq::class);

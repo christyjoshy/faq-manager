@@ -1,3 +1,3 @@
 <div class="box-header bg-dark text-white p-4 p-md-5 mb-4 d-flex justify-content-center">
-    <h2>@if(request()->is('livewire/categories')) Categories @elseif(request()->is('livewire/queries')) Frequently Asked Questions @endif</h2>
+    <h2>@if(request()->is('livewire/categories')) Categories @elseif(request()->is('livewire/queries')) Frequently Asked Questions @elseif(request()->is('livewire/faq')) Frequently Asked Questions @endif</h2>
 </div>
